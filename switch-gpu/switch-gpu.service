@@ -1,0 +1,11 @@
+[Unit]
+Description=Handles kernel commandline setting xorg configuration for GPU.
+Before=graphical.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/root/dynamic-xorg-config.bash
+
+[Install]
+WantedBy=graphical.target

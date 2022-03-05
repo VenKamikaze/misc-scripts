@@ -1,0 +1,14 @@
+Section "Device"
+    Identifier "intel"
+    Driver "intel"
+    BusID "PCI:0:2:0"
+#    Option "AccelMethod" "sna"
+    Option "TearFree" "true"
+EndSection
+
+Section "Screen"
+    Identifier "intel"
+    Device "intel"
+    Option "GlxVendorLibrary" "mesa"
+EndSection
+

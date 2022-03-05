@@ -1,0 +1,16 @@
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "intel"
+    Option "PrimaryGPU" "yes"
+EndSection
+
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "no"
+    ModulePath "/usr/lib/nvidia/xorg"
+EndSection
+

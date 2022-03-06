@@ -41,20 +41,33 @@ sleep 4
 echo -n "VFIO drivers removed. Removing amdgpu and re-adding..."
 
 sudo rmmod amdgpu
-sleep 4
+sleep 2
 echo -n "..."
 
 sudo modprobe amdgpu
-echo -n " DONE!"
+echo " DONE!"
 
 echo -n "Renaming /etc/modprobe.d/vfio.conf{.disabled,} now that AMDGPU is loaded..."
 sudo mv /etc/modprobe.d/vfio.conf{.disabled,}
-echo -n "... DONE!"
+echo "... DONE!"
 
+#echo -n "Renaming /usr/share/X11/xorg.conf.d/11-nvidia-drm-outputclass.conf{,.disabled}"
+
+#sudo mv /usr/share/X11/xorg.conf.d/11-nvidia-drm-outputclass.conf{,.disabled}
+
+sleep 0.1
 echo "Re-enabling SDDM..."
-sleep 1
+echo -n "Change HDMI switch to port 1 and press enter to continue: "
+read ANS
 
 sudo systemctl start sddm.service
+
+sleep 20
+
+#echo -n "Renaming /usr/share/X11/xorg.conf.d/11-nvidia-drm-outputclass.conf{.disabled,}"
+#sudo mv /usr/share/X11/xorg.conf.d/11-nvidia-drm-outputclass.conf{.disabled,}
+
+
 ##vfio_pci               16384  0
 #vfio_pci_core          69632  1 vfio_pci
 #irqbypass              16384  2 vfio_pci_core,kvm

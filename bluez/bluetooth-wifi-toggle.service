@@ -1,0 +1,19 @@
+[Unit]
+Description=Make sure WiFi is not active when Bluetooth is active
+After=bluetooth.service
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+Restart=on-failure
+RestartSec=10
+ExecStart=/root/bin/kill-wifi-on-btconn.py
+WorkingDirectory=/root/bin
+StandardOutput=file:/root/bin/btconn-stdout.log
+StandardError=file:/root/bin/btconn-stderr.log
+SyslogIdentifier=kill-wifi-on-btconn
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+
